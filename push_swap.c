@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/10/23 22:31:35 by asay             ###   ########.fr       */
+/*   Updated: 2025/10/26 20:17:51 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,10 +63,34 @@ int check_arg(char **argv)
 }
 
 int main(int argc, char **argv)
-{
+{	
+	int *a;
+	int *b;
+	int size_a;
+	int size_b;
+	
 	if(argc < 2)
 		return (0);
-
-	int a[argc - 1];
+	if(argc == 2)
+		ft_split(argv, ' ');
+		// split_arg yazılacak. splitleyip diğer kontrollere gitmeli. 
+	is_arg_num(argv);
+	check_arg(argv);
+	size_a = argc - 1;
+	a = malloc(size_a * sizeof(int));
+	if(!a)
+		err_exit();
+	size_b = 0;
+	b = malloc(size_b * sizeof(int));
+	if(!b)
+		err_exit();
+	
+	
 	push_arg(argc, argv, a);
+}
+
+void split_arg(char **str, char c)
+{
+
+	
 }

@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:40 by asay              #+#    #+#             */
-/*   Updated: 2025/10/23 22:01:33 by asay             ###   ########.fr       */
+/*   Updated: 2025/10/26 20:10:44 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,17 @@ int ft_atoi(const char *str)
         i++;
     }
     return (sign * result);
+}
+
+void is_arg_num(char *str)
+{
+    int i;
+
+    i = 0;
+    while(str[i])
+    {
+        if(!(str[i] >= '0' && str[i] <= '9') || str[i] != ' ')
+            return ;
+        i++;
+    }
 }

@@ -1,6 +1,11 @@
 NAME = push_swap
 SRCS = push_swap.c \
+	   push.c \
+	   swap.c \
+	   rotate.c \
 	   utils.c \
+	   split.c \
+	   
 
 OBJS = $(SRCS:.c=.o)
 CC = cc
