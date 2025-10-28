@@ -12,14 +12,14 @@ void push_a(int *a, int *b, int a_size, int b_size);
 void push_b(int *a, int *b, int a_size, int b_size);
 void push_arg(int argc, char **argv, int *arr);
 int ft_atoi(const char *str);
-int is_duplicate(char c, char *str);
+int is_duplicate(char *str, char c);
 int check_arg(char **argv);
 static char	**allfree(char **arr, size_t i);
 static int	wordnum(const char *str, char c);
 static size_t	word_len(const char *str, char c);
 static char	**fill_array(char **result, const char *s, char c);
 char	**ft_split(char const *s, char c);
-void is_arg_num(char *str);
-
+void is_valid_char(char *str);
+int ft_len(char *str);
 
 #endif

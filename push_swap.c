@@ -6,26 +6,28 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/10/26 20:17:51 by asay             ###   ########.fr       */
+/*   Updated: 2025/10/28 23:04:07 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void push_arg(int argc, char **argv, int *arr)
+void is_valid_char(char *str)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while(argc > 0)
-	{
-		arr[argc - 1] = ft_atoi(argv[i]);
-		i++;
-		argc--;
-	}
+    i = 0;    
+	if (!(str[0] == '+' || str[0] == '-' || (str[0] >= '0' && str[0] <= '9')))
+	    err_exit();
+    while(str[i])
+    {
+		if(!(str[i] >= '0' && str[i] <= '9') || str[i] != ' ')
+            err_exit();
+        i++;
+    }
 }
 
-int is_duplicate(char c, char *str)
+int is_duplicate(char *str, char c)
 {
 	int i;
 	int dup;
@@ -43,54 +45,62 @@ int is_duplicate(char c, char *str)
 	return 0;
 }
 
-int check_arg(char **argv)
+void quoted_arg(char **arg, char **str)
 {
 	int i;
-	long num; // neden long oldugunu arastır!!
 
 	i = 0;
-	while(argv[i])
+	str = ft_split(arg[1], ' ');
+	while(str[i])
 	{
-		num = ft_atoi(argv[i]);
-		if(num < -2147483648 || num > 2147483647)
-			err_exit();
-		if(is_validnum(num)) // argümanın geçerl bir sayı oldugunu kontrol edecek bir fonksiyon yazılacak!!
-			err_exit();			 
-		if(is_duplicate(num, argv) == 1)
-			err_exit();
+		is_valid_char(str[i]);
+		is_duplicate(str[i], i);
 		i++;
 	}
 }
+
+void non_quoted_arg(char **str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+	{
+		is_valid_char(str[i]);
+		is_duplicate(str[i], i);
+		i++;
+	}
+}
+#include <stdio.h>
 
 int main(int argc, char **argv)
 {	
 	int *a;
 	int *b;
-	int size_a;
-	int size_b;
-	
+	char **split;
+
+	b = malloc((ft_doublelen(argv)) * sizeof(int));
+	if(!b)
+		return ;
 	if(argc < 2)
 		return (0);
 	if(argc == 2)
-		ft_split(argv, ' ');
-		// split_arg yazılacak. splitleyip diğer kontrollere gitmeli. 
-	is_arg_num(argv);
-	check_arg(argv);
-	size_a = argc - 1;
-	a = malloc(size_a * sizeof(int));
-	if(!a)
-		err_exit();
-	size_b = 0;
-	b = malloc(size_b * sizeof(int));
-	if(!b)
-		err_exit();
+	{
+		quoted_arg(argv, split);
+		push_arg(argc, split, a);
+	}	
+	else
+	{
+		non_quoted_arg(argv);
+		push_arg(argc, argv, a);
+	}
+	int i = 0;
+	while(i < 20)
+	{
+		printf("%d\n", a[i]);
+		i++;
+	}
 	
-	
-	push_arg(argc, argv, a);
+	return 0;
 }
 
-void split_arg(char **str, char c)
-{
-
-	
-}
