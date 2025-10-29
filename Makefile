@@ -1,6 +1,7 @@
 NAME = push_swap
 SRCS = push_swap.c \
 	   push.c \
+	   re_rotate.c \
 	   rotate.c \
 	   split.c \
 	   swap.c \

@@ -14,5 +14,40 @@
 
 void rotate_a(int *a, int size, int flag)
 {
+    int temp;
+    int i;
 
+    i = 0;
+    temp = a[0];  
+    while(i < size - 1)
+    {
+        a[i] = a[i + 1];
+        i++;
+    }
+    a[size - 1] = temp;
+    if(flag)
+        write(1, "ra\n", 3);
+}
+void rotate_b(int *b, int size, int flag)
+{
+    int temp;
+    int i;
+
+    i = 0;
+    temp = b[0];  
+    while(i < size - 1)
+    {
+        b[i] = b[i + 1];
+        i++;
+    }
+    b[size - 1] = temp;
+    if(flag)
+        write(1, "rb\n", 3);
+}
+
+void rotate_both(int *a, int *b, int size)
+{
+    rotate_a(a, size, 0);
+    rotate_b(b, size, 0);
+    write(1, "rr\n", 3);
 }

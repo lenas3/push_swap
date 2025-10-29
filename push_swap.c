@@ -94,13 +94,6 @@ int main(int argc, char **argv)
 		non_quoted_arg(argv);
 		push_arg(argc, argv, a);
 	}
-	int i = 0;
-	while(i < 20)
-	{
-		printf("%d\n", a[i]);
-		i++;
-	}
-	
 	return 0;
 }
 
