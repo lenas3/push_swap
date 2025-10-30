@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/10/28 23:04:07 by asay             ###   ########.fr       */
+/*   Updated: 2025/10/30 16:30:44 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,11 @@ int main(int argc, char **argv)
 	int *a;
 	int *b;
 	char **split;
+	int size_a;
+	int size_b;
 
+	
+	
 	b = malloc((ft_doublelen(argv)) * sizeof(int));
 	if(!b)
 		return ;

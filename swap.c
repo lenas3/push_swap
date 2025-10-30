@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:51:43 by asay              #+#    #+#             */
-/*   Updated: 2025/10/26 19:55:54 by asay             ###   ########.fr       */
+/*   Updated: 2025/10/30 20:51:54 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,22 @@ void	swap_a(int *a, int size, int flag)
 
 	if(size < 2 || !a || !a[1])
 		return ;
-	temp = a[size];
-	a[size] = a[size - 1];
-	a[size - 1] = temp;
+	temp = a[0];
+	a[0] = a[1];
+	a[1] = temp;
 	if (flag)
 		write(1, "sa\n", 3);
 }
 
 void	swap_b(int *b, int size, int flag)
 {
+	int temp;
+
 	if(size < 2 || !b || !b[1])
 		return ;
-	int temp;
-	temp = b[size];
-	b[size] = b[size - 1];
-	b[size - 1] = temp;
+	temp = b[0];
+	b[0] = b[1];
+	b[1] = temp;
 	if (flag)
 		write(1, "sb\n", 3);
 }

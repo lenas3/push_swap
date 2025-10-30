@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:03 by asay              #+#    #+#             */
-/*   Updated: 2025/10/26 20:07:53 by asay             ###   ########.fr       */
+/*   Updated: 2025/10/30 19:34:40 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,10 @@
 
 void push_a(int *a, int *b, int a_size, int b_size)
 {
+	int temp;
+
 	if(b_size == 0)
 		return ;
-	int temp;
 	temp = b[b_size - 1];
 	b[b_size - 1] = 0;
 	a[a_size - 1] = temp;
