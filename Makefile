@@ -3,6 +3,7 @@ SRCS = push_swap.c \
 	   push.c \
 	   re_rotate.c \
 	   rotate.c \
+	   sort_five.c \
 	   split.c \
 	   swap.c \
 	   utils.c \

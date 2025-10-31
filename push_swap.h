@@ -29,5 +29,7 @@ int ft_doublelen(char **str);
 void free_all(int *stack, int size);
 int ft_atoi(const char *str);
 void push_arg(int argc, char **argv, int *arr);
+void two_sort(int *a, int size);
+void three_sort(int *a, int *b, int size);
 
 #endif
