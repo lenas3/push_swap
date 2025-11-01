@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:40 by asay              #+#    #+#             */
-/*   Updated: 2025/10/28 23:16:13 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/01 20:49:23 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,11 @@ int ft_doublelen(char **str)
     return j;
 }
 
-
-void free_all(int *stack, int size)
+void free_all(int *stack, int *size_a, int *size_b)
 {
-	int i;
-
-	i = 0;
-	while(i < size)
-	{
-		free(stack[i]);
-		i++;
-	}
+	free(stack);
+	free(size_a);
+	free(size_b);
 }
 
 int ft_atoi(const char *str)
@@ -51,10 +45,9 @@ int ft_atoi(const char *str)
     int i = 0;
     int result = 0;
     int sign = 1;
-    char *s;
 
-	while(str[i] && str[i] == ' ' ||  str[i] == '\t' || str[i] == '\r' ||
-	        str[i] == '\f'|| str[i] == '\n' || str[i] == '\v')
+	while(str[i] &&( str[i] == ' ' ||  str[i] == '\t' || str[i] == '\r' ||
+	        str[i] == '\f'|| str[i] == '\n' || str[i] == '\v'))
 	    i++;
 
 	while(str[i] == '+' || str[i] == '-')

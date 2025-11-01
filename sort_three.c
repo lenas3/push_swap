@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   basic_sort.c                                       :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:10:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/01 01:30:44 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/01 20:46:53 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void two_sort(int *a, int size)
+void two_element_sort(int *a, int size)
 {
     int i;
-    int temp;
 
     i = 0;
     if(a[i] > a[i + 1])
@@ -24,7 +23,7 @@ void two_sort(int *a, int size)
         return;
 }
 
-void three_sort(int *a, int *b, int size)
+void three_element_sort(int *a, int size)
 {
     if(a[0] > a[1] && a[1] > a[2])
         return;

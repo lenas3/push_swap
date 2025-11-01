@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/10/31 23:54:18 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/01 21:36:00 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,12 +45,12 @@ int is_duplicate(char *str, char c)
 	return 0;
 }
 
-void quoted_arg(char **arg, char **str)
+void quoted_arg(char **argv, char **str)
 {
 	int i;
 
 	i = 0;
-	str = ft_split(arg[1], ' ');
+	str = ft_split(argv[1], ' ');
 	while(str[i])
 	{
 		is_valid_char(str[i]);
@@ -59,11 +59,12 @@ void quoted_arg(char **arg, char **str)
 	}
 }
 
-void non_quoted_arg(char **str)
+void non_quoted_arg(char **str, int *size, int argc)
 {
 	int i;
 
 	i = 0;
+	*size = argc - 1;
 	while(str[i])
 	{
 		is_valid_char(str[i]);
@@ -71,33 +72,31 @@ void non_quoted_arg(char **str)
 		i++;
 	}
 }
-#include <stdio.h>
 
 int main(int argc, char **argv)
 {	
 	int *a;
 	int *b;
 	char **split;
-	int size_a;
-	int size_b;
+	int *size_a;
+	int *size_b;
 
-	
-	
-	b = malloc((ft_doublelen(argv)) * sizeof(int));
-	if(!b)
-		return ;
+	split  = NULL;
+	size_a = NULL;
+	size_b = NULL;
 	if(argc < 2)
 		return (0);
 	if(argc == 2)
 	{
+		quoted_size(argv, size_a);
 		quoted_arg(argv, split);
+		allocate_mem(&a, &b, *size_a);
 		push_arg(argc, split, a);
-	}	
-	else
-	{
-		non_quoted_arg(argv);
-		push_arg(argc, argv, a);
 	}
+	non_quoted_arg(argv, size_a, argc);
+	allocate_mem(&a, &b, *size_a);
+	push_arg(argc, argv, a);
+	sort_main(a, b, size_a, size_b);
+	free_all(a, size_a, size_b);
 	return 0;
 }
-
