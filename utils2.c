@@ -37,18 +37,20 @@ void quoted_size(char **str, int *size)
         }
         i++;
     }
+    //write(1, "quoted_size done\n", 18);
 }
 void allocate_mem(int **a, int **b, int size_a)
 {
 	*a = malloc(sizeof(int) * size_a);
 	if(!*a)
-		err_exit();
+		return ;
 	*b = malloc(sizeof(int) * size_a);
 	if(!*b)
     {
         free(*a);
-        err_exit();
+        return ;
     }
+    //write(1, "allocate_mem done\n", 18);
 }
 
 void sort_main(int *a, int *b, int *size_a, int *size_b)
@@ -65,4 +67,20 @@ void sort_main(int *a, int *b, int *size_a, int *size_b)
         five_element_sort(a, b, size_a, size_b);
     else
         radix(a, b, size_a, size_b);
+    //write(1, "sort_main done\n", 15);
+}
+
+void free_split(char **res)
+{
+    int i;
+
+    i = 0;
+    if (!res)
+        return;
+    while (res[i])
+    {
+        free(res[i]);
+        i++;
+    }
+    free(res);
 }

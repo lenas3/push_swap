@@ -25,12 +25,14 @@ int min_element(int *arr, int size)
             min_index = i;
         i++;
     }
+    //write(1, "min_element done\n", 17);
     return (min_index);
 }
 
 void place_to_top(int *a, int size)
 {
     int min;
+    int count;
 
     min = min_element(a, size);
     if(min == 0)
@@ -42,9 +44,11 @@ void place_to_top(int *a, int size)
     }
     else
     {
-        while(min++ < size)
+        count = size - min;
+        while(count-- > 0)
             re_rotate_a(a, size, 1);
     }
+    //write(1, "place_to_top done\n", 18);
 }
 
 void five_element_sort(int *a, int *b, int *a_size, int *b_size)
@@ -57,27 +61,27 @@ void five_element_sort(int *a, int *b, int *a_size, int *b_size)
         min_element(a, *a_size);
         place_to_top(a, *a_size);
         push_b(a, b, a_size, b_size);
-        b_size++;
-        a_size--;
+        (*b_size)++;
+        (*a_size)--;
     }
     three_element_sort(a, *a_size);
     push_a(a, b, a_size, b_size);
-    a_size++;
-    b_size--;
+    (*a_size)++;
+    (*b_size)--;
     push_a(a, b, a_size, b_size);
-    a_size++;
-    b_size--;
+    (*a_size)++;
+    (*b_size)--;
 }
 
 void four_element_sort(int *a, int *b, int *a_size, int *b_size)
 {
         min_element(a, *a_size);
         place_to_top(a, *a_size);
-        push_b(a, b, a_size, b_size); 
-        b_size++;
-        a_size--;
+        push_b(a, b, a_size, b_size);
+        (*b_size)++;
+        (*a_size)--;
         three_element_sort(a, *a_size);
         push_a(a, b, a_size, b_size);
-        a_size++;
-        b_size--;
+        (*a_size)++;
+        (*b_size)--;
 }

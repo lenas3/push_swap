@@ -25,9 +25,9 @@ void two_element_sort(int *a, int size)
 
 void three_element_sort(int *a, int size)
 {
-    if(a[0] > a[1] && a[1] > a[2])
+    if(a[0] < a[1] && a[1] < a[2])
         return;
-    else if(a[1] > a[0] && a[1] > a[2] && a[2] > a[0])
+    else if(a[1] > a[0] && a[2] > a[0] && a[1] > a[2])
     {
         re_rotate_a(a, size, 1);
         swap_a(a, size, 1);
@@ -36,14 +36,11 @@ void three_element_sort(int *a, int size)
         swap_a(a, size, 1);
     else if(a[1] > a[0] && a[1] > a[2] && a[0] > a[2])
         re_rotate_a(a, size, 1);
+    else if(a[0] > a[1] && a[0] > a[2] && a[2] > a[1])
+        rotate_a(a, size, 1);
     else if(a[0] > a[1] && a[0] > a[2] && a[1] > a[2])
     {
-        swap_a(a, size, 1);
-        re_rotate_a(a, size, 1);
-    }
-    else if(a[0] > a[1] && a[2] > a[1] && a[0] > a[2])
-    {
-        re_rotate_a(a, size, 1);
+        rotate_a(a, size, 1);
         swap_a(a, size, 1);
     }
 }

@@ -15,6 +15,7 @@
 void err_exit()
 {
 	write(1, "Error\n", 6);
+
 	exit(EXIT_FAILURE);
 }
 
@@ -33,17 +34,10 @@ int ft_doublelen(char **str)
     return j;
 }
 
-void free_all(int *stack, int *size_a, int *size_b)
-{
-	free(stack);
-	free(size_a);
-	free(size_b);
-}
-
 int ft_atoi(const char *str)
 {
     int i = 0;
-    int result = 0;
+    long result = 0;
     int sign = 1;
 
 	while(str[i] &&( str[i] == ' ' ||  str[i] == '\t' || str[i] == '\r' ||
@@ -61,21 +55,20 @@ int ft_atoi(const char *str)
 	    result = result * 10 + (str[i] - '0');
 	    i++;
 	}
+	if(result * sign < -2147483648 || result * sign > 2147483647)
+		err_exit();
 	return (sign * result);
 }
 
-void push_arg(int argc, char **argv, int *arr)
+void push_arg(int argc, char **argv, int **arr)
 {
 	int i;
 
 	i = 0;
-	arr = malloc((ft_doublelen(argv)) * sizeof(int));
-	if(!arr)
-		return ;
-	while(argc > 0)
+	while(i < argc)
 	{
-		arr[argc - 1] = ft_atoi(argv[i]);
+		(*arr)[i] = ft_atoi(argv[i]);
 		i++;
-		argc--;
 	}
+	//write(1, "push_arg done\n", 15);
 }

@@ -23,7 +23,7 @@ int *find_index(int *arr, int size)
     count = 0;
     index = malloc(sizeof(int) * (size));
     if(!index)
-        err_exit();
+        return (NULL);
     while(i < size)
     {
         j = 0;
@@ -38,10 +38,11 @@ int *find_index(int *arr, int size)
         }
         i++;
     }
+    //write(1, "find_index done\n", 17);
     return (index);
 }
 
-int find_max(int *a, int *size)
+int find_max(int *a, int size)
 {
     int i;
     int *index;
@@ -50,9 +51,9 @@ int find_max(int *a, int *size)
 
     i = 0;
     count = 0;
-    index = find_index(a, *size);
+    index = find_index(a, size);
     max = index[i];
-    while(i < *size)
+    while(i < size)
     {
         if(index[i] > max)
             max = index[i];
@@ -66,18 +67,17 @@ int find_max(int *a, int *size)
     if(count == 0)
         count = 1;
     free(index);
+    //write(2, "find_max done\n", 15);
     return count;
 }
 
 void radix(int *a, int *b, int *size_a, int *size_b)
 {
     int i;
-    int j;
     int max;
 
     i = 0;
-    j = 0;
-    max = find_max(a, size_a);
+    max = find_max(a, *size_a);
     while(i < max)
     {
         if(((max >> i) & 1) == 1)
@@ -95,4 +95,5 @@ void radix(int *a, int *b, int *size_a, int *size_b)
         (*size_a)++;
         (*size_b)--;
     }
+    //write(1, "radix done\n", 12);
 }
