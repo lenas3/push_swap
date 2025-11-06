@@ -46,9 +46,9 @@ void re_rotate_b(int *b, int size, int flag)
         write(1, "rrb\n", 4);
 }
 
-void re_rotate_both(int *a, int *b, int size)
+void re_rotate_both(int *a, int *b, int size_a, int size_b)
 {
-    re_rotate_a(a, size, 0);
-    re_rotate_b(b, size, 0);
+    re_rotate_a(a, size_a, 0);
+    re_rotate_b(b, size_b, 0);
     write(1, "rrr\n", 4);
 }

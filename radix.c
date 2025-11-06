@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:23:05 by asay              #+#    #+#             */
-/*   Updated: 2025/11/01 20:41:02 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/05 23:09:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,25 +20,24 @@ int *find_index(int *arr, int size)
     int count;
 
     i = 0;
-    count = 0;
     index = malloc(sizeof(int) * (size));
     if(!index)
         return (NULL);
-    while(i < size)
+    while(i < size - 1)
     {
+        count = 0;
         j = 0;
-        while(j < size)
+        while(j < size - 1)
         {
-            if(arr[i] > arr[j])
+            if(arr[j] > arr[i])
             {
-                index[i] = count;
                 count++;
+                index[i] = count;
             }
             j++;
         }
         i++;
     }
-    //write(1, "find_index done\n", 17);
     return (index);
 }
 
@@ -67,7 +66,6 @@ int find_max(int *a, int size)
     if(count == 0)
         count = 1;
     free(index);
-    //write(2, "find_max done\n", 15);
     return count;
 }
 

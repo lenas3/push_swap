@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:59:50 by asay              #+#    #+#             */
-/*   Updated: 2025/10/26 20:03:27 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/05 20:46:58 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@ void rotate_b(int *b, int size, int flag)
         write(1, "rb\n", 3);
 }
 
-void rotate_both(int *a, int *b, int size)
+void rotate_both(int *a, int *b, int size_a, int size_b)
 {
-    rotate_a(a, size, 0);
-    rotate_b(b, size, 0);
+    rotate_a(a, size_a, 0);
+    rotate_b(b, size_b, 0);
     write(1, "rr\n", 3);
 }

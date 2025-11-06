@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/11/02 15:31:16 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/05 20:33:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,11 +95,12 @@ int main(int argc, char **argv)
 		err_exit();
 	split  = NULL;
 	size_b = 0;
+	size_a = 0;
 	if(argc == 2)
 	{
+		quoted_arg(argv, &split);
 		quoted_size(argv, &size_a);
 		allocate_mem(&a, &b, size_a);
-		quoted_arg(argv, &split);
 		push_arg(size_a, split, &a);
 		is_duplicate(a, size_a, b, split);
 	}

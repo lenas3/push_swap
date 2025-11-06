@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:58:03 by asay              #+#    #+#             */
-/*   Updated: 2025/11/01 20:36:38 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/05 23:09:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,51 @@
 void push_a(int *a, int *b, int *a_size, int *b_size)
 {
 	int temp;
+	int i;
 
-	if(b_size == 0)
-		return ;
-	temp = b[*b_size - 1];
-	b[*b_size - 1] = 0;
-	a[*a_size - 1] = temp;
-	a_size++;
-	b_size--;
-	write(1, "pa\n", 3);
+	if (*b_size == 0)
+        return;
+	i = 0;
+    temp = b[0];
+    while(i < *b_size - 1)
+	{
+		b[i] = b[i + 1];
+		i++;
+	}
+	(*b_size)--;
+	i = *a_size - 1; // burada -1 digerinde direkt i = b_size, farkını iyice araştır.
+    while(i > 0)
+	{
+		a[i] = a[i - 1];
+		i--;
+	}
+	a[0] = temp;
+	(*a_size)++;
+    write(1, "pa\n", 3);
 }
 
 void push_b(int *a, int *b, int *a_size, int *b_size)
 {
 	int temp;
-	if(a_size == 0)
-		return ;
-	temp = a[*a_size - 1];
-	a[*a_size - 1] = 0;
-	b[*b_size - 1] = temp;
-	a_size--;
-	b_size++;
-	write(1, "pb\n", 3);
-}
+	int i;
 
+	if (*a_size == 0)
+        return;
+	i = 0;
+    temp = a[0];
+    while(i < *a_size - 1)
+	{
+		a[i] = a[i + 1];
+		i++;
+	}
+	(*a_size)--;
+	i = *b_size - 1;
+    while(i > 0)
+	{
+		b[i] = b[i - 1];
+		i--;
+	}
+	b[0] = temp;
+	(*b_size)++;
+    write(1, "pb\n", 3);
+}

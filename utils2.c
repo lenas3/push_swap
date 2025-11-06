@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:45:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/01 20:50:55 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/05 19:53:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,13 @@ void allocate_mem(int **a, int **b, int size_a)
 {
 	*a = malloc(sizeof(int) * size_a);
 	if(!*a)
-		return ;
-	*b = malloc(sizeof(int) * size_a);
+        err_exit();
+    *b = malloc(sizeof(int) * size_a);
 	if(!*b)
     {
         free(*a);
-        return ;
+        err_exit();
+        //memory ayrılamama hatasında error yazmak dogru mu?
     }
     //write(1, "allocate_mem done\n", 18);
 }
