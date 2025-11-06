@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/11/05 20:33:31 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/06 20:30:16 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void is_valid_char(char *str)
             err_exit();
         i++;
     }
-	//write(1, "is_valid_char done \n", 21);
 }
 
 void is_duplicate(int *arr, int size, int *b, char **split)
@@ -66,7 +65,6 @@ void quoted_arg(char **argv, char ***str)
 		is_valid_char((*str)[i]);
 		i++;
 	}
-	//write(1, "quoted_arg done\n", 17);
 }
 
 void non_quoted_arg(char **argv, int *size, int argc)
@@ -80,7 +78,6 @@ void non_quoted_arg(char **argv, int *size, int argc)
 		is_valid_char(argv[i]);
 		i++;
 	}
-	//write(1, "non_quoted_arg done\n", 21);
 }
 
 int main(int argc, char **argv)
