@@ -3,45 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:23:05 by asay              #+#    #+#             */
-/*   Updated: 2025/11/06 21:16:12 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/11 23:19:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
 
-int *find_index(int *arr, int size)
+int *index_array(int *arr, int size)
 {
-    int i;
-    int j;
     int *index;
+    int i, j;
     int count;
 
-    i = 0;
-    index = malloc(sizeof(int) * (size));
-    if(!index)
+    index = malloc(sizeof(int) * size);
+    if (!index)
         return (NULL);
-    while(i < size - 1)
+
+    i = 0;
+    while (i < size)
     {
         count = 0;
         j = 0;
-        while(j < size - 1)
+        while (j < size)
         {
-            if(arr[j] > arr[i])
-            {
+            if (arr[j] < arr[i])
                 count++;
-                index[i] = count;
-            }
             j++;
         }
+        index[i] = count;
         i++;
     }
     return (index);
 }
 
-int find_max(int *a, int size)
+
+int find_max_move(int *a, int size)
 {
     int i;
     int *index;
@@ -50,7 +50,7 @@ int find_max(int *a, int size)
 
     i = 0;
     count = 0;
-    index = find_index(a, size);
+    index = index_array(a, size);
     max = index[i];
     while(i < size)
     {
@@ -72,28 +72,35 @@ int find_max(int *a, int size)
 void radix(int *a, int *b, int *size_a, int *size_b)
 {
     int i;
-    int num;
-    int max;
+    int index;
+    int max_move;
     int len;
+    int *ind_arr;
+    int k = 0;
+    index = 0;
 
-    i = 0;
-    num = 0;
-    len = *size_a;
-    max = find_max(a, *size_a);
-    
-    while(i < max)
+    ind_arr = index_array(a, *size_a);
+    while(k < *size_a)
     {
-        num = 0;
-        while(num < len)
+        a[k] = ind_arr[k];
+        k++;
+    }   
+    max_move = find_max_move(ind_arr, *size_a);
+    while(index < max_move)
+    {
+        i = 0;
+        len = *size_a;
+        while(i < len)
         {
-            if(((a[0] >> i) & 1) == 1)
+            if(((a[0] >> index) & 1) == 1)
                 rotate_a(a, *size_a, 1);
             else
                 push_b(a, b, size_a, size_b);
-            num++;
+            i++;
         }
-        while(*size_b > 0)
+        while(*size_b != 0)
             push_a(a, b, size_a, size_b);
-        i++;
-    }  
+        index++;
+    }
+    free(ind_arr);
 }

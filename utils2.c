@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/06 17:10:06 by asay              #+#    #+#             */
-/*   Updated: 2025/11/06 18:11:26 by asay             ###   ########.fr       */
+/*   Created: 2025/11/01 15:45:57 by asay              #+#    #+#             */
+/*   Updated: 2025/11/05 19:53:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ void quoted_size(char **str, int *size)
         }
         i++;
     }
+    //write(1, "quoted_size done\n", 18);
 }
-
 void allocate_mem(int **a, int **b, int size_a)
 {
 	*a = malloc(sizeof(int) * size_a);
@@ -51,6 +51,7 @@ void allocate_mem(int **a, int **b, int size_a)
         err_exit();
         //memory ayrılamama hatasında error yazmak dogru mu?
     }
+    //write(1, "allocate_mem done\n", 18);
 }
 
 void sort_main(int *a, int *b, int *size_a, int *size_b)
@@ -67,6 +68,7 @@ void sort_main(int *a, int *b, int *size_a, int *size_b)
         five_element_sort(a, b, size_a, size_b);
     else
         radix(a, b, size_a, size_b);
+    //write(1, "sort_main done\n", 15);
 }
 
 void free_split(char **res)

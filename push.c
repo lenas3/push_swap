@@ -27,7 +27,7 @@ void push_a(int *a, int *b, int *a_size, int *b_size)
 		i++;
 	}
 	(*b_size)--;
-	i = *a_size - 1; // burada -1 digerinde direkt i = b_size, farkını iyice araştır.
+	i = *a_size;
     while(i > 0)
 	{
 		a[i] = a[i - 1];
@@ -45,15 +45,15 @@ void push_b(int *a, int *b, int *a_size, int *b_size)
 
 	if (*a_size == 0)
         return;
-	i = 0;
     temp = a[0];
+	i = 0;
     while(i < *a_size - 1)
 	{
 		a[i] = a[i + 1];
 		i++;
 	}
 	(*a_size)--;
-	i = *b_size - 1;
+	i = *b_size;
     while(i > 0)
 	{
 		b[i] = b[i - 1];
