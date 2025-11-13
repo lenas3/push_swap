@@ -29,7 +29,7 @@ int ft_atoi(const char *str)
 	        str[i] == '\f'|| str[i] == '\n' || str[i] == '\v'))
 	    i++;
 
-	while(str[i] == '+' || str[i] == '-')
+	if(str[i] == '+' || str[i] == '-')
 	{
 	    if(str[i] == '-')
 	        sign *= -1;
@@ -55,5 +55,4 @@ void push_arg(int argc, char **argv, int **arr)
 		(*arr)[i] = ft_atoi(argv[i]);
 		i++;
 	}
-	//write(1, "push_arg done\n", 15);
 }

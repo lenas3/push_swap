@@ -20,13 +20,13 @@ void two_element_sort(int *a, int size)
     if(a[i] > a[i + 1])
         swap_a(a, size, 1);
     else
-        return;
+        return ;
 }
 
 void three_element_sort(int *a, int size)
 {
     if(a[0] < a[1] && a[1] < a[2])
-        return;
+        return ;
     else if(a[1] > a[0] && a[2] > a[0] && a[1] > a[2])
     {
         re_rotate_a(a, size, 1);

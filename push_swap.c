@@ -19,15 +19,12 @@ void is_valid_char(char *str)
     i = 0;
 	if(!str || str[0] == '\0')
 		err_exit();
-	if (str[0] != '+' && str[0] != '-' && !(str[0] >= '0' && str[0] <= '9'))
-	    err_exit();
     while(str[i])
     {
-		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' '))
+		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '-' || str[i] == '+'))
             err_exit();
         i++;
     }
-	//write(1, "is_valid_char done \n", 21);
 }
 
 void is_duplicate(int *arr, int size, int *b, char **split)
@@ -43,9 +40,7 @@ void is_duplicate(int *arr, int size, int *b, char **split)
 		{
 			if(arr[i] == arr[j])
 			{
-				free(arr);
-				free(b);
-				free_split(split);
+				free_all(arr, b, split);
 				err_exit();
 			}
 			j++;
@@ -66,21 +61,19 @@ void quoted_arg(char **argv, char ***str)
 		is_valid_char((*str)[i]);
 		i++;
 	}
-	//write(1, "quoted_arg done\n", 17);
 }
 
 void non_quoted_arg(char **argv, int *size, int argc)
 {
 	int i;
 
-	i = 1; // argv[1]'den başlasın diye.
+	i = 1;
 	*size = argc - 1;
 	while(i < argc)
 	{
 		is_valid_char(argv[i]);
 		i++;
 	}
-	//write(1, "non_quoted_arg done\n", 21);
 }
 
 int main(int argc, char **argv)
@@ -113,8 +106,6 @@ int main(int argc, char **argv)
 		is_duplicate(a, size_a, b, split);
 	}
 	sort_main(a, b, &size_a, &size_b);
-	free(a);
-	free(b);
-	free_split(split);
+	free_all(a, b, split);
 	return 0;
 }

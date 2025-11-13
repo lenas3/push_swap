@@ -36,5 +36,6 @@ void allocate_mem(int **a, int **b, int size_a);
 void quoted_size(char **str, int *size);
 void sort_main(int *a, int *b, int *size_a, int *size_b);
 void free_split(char **res);
+void free_all(int *a, int *b, char **split);
 
 #endif

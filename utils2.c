@@ -37,7 +37,6 @@ void quoted_size(char **str, int *size)
         }
         i++;
     }
-    //write(1, "quoted_size done\n", 18);
 }
 void allocate_mem(int **a, int **b, int size_a)
 {
@@ -51,7 +50,6 @@ void allocate_mem(int **a, int **b, int size_a)
         err_exit();
         //memory ayrılamama hatasında error yazmak dogru mu?
     }
-    //write(1, "allocate_mem done\n", 18);
 }
 
 void sort_main(int *a, int *b, int *size_a, int *size_b)

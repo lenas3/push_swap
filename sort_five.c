@@ -25,7 +25,6 @@ int min_element(int *arr, int size)
             min_index = i;
         i++;
     }
-    //write(1, "min_element done\n", 17);
     return (min_index);
 }
 
@@ -48,7 +47,6 @@ void place_to_top(int *a, int size)
         while(count-- > 0)
             re_rotate_a(a, size, 1);
     }
-    //write(1, "place_to_top done\n", 18);
 }
 
 void five_element_sort(int *a, int *b, int *a_size, int *b_size)
