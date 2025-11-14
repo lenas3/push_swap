@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:45:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/05 19:53:37 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 18:50:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,9 +85,7 @@ void free_split(char **res)
 }
 void free_all(int *a, int *b, char **split)
 {
-    if (a)
-        free(a);
-    if (b)
-        free(b);
+    free(a);
+    free(b);
     free_split(split);
 }

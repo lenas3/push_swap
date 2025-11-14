@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/11/14 18:34:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 18:51:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,18 @@ void quoted_arg(char **argv, char ***str)
 
 	i = 0;
 	tmp = epur_str(argv[1], 0, 0);
-	if (!tmp)
-		err_exit();
 	*str = ft_split(tmp, ' ');
 	free(tmp);
 	if (*str == NULL)
         err_exit(); 
     if ((*str)[0] == NULL)
     {
-        free_split(*str); 
+        free(*str); 
         err_exit();
     }
 	while((*str)[i])
 	{
-		is_valid_char((*str)[i], NULL, *str);
+		is_valid_char((*str)[i]);
 		i++;
 	}
 }
@@ -45,7 +43,7 @@ void non_quoted_arg(char **argv, int *size, int argc)
 	*size = argc - 1;
 	while(i < argc)
 	{
-		is_valid_char(argv[i], NULL, NULL);
+		is_valid_char(argv[i]);
 		i++;
 	}
 }
@@ -63,11 +61,11 @@ int main(int argc, char **argv)
 	if(argc == 2)
 	{
 		quoted_arg(argv, &split);
-		quoted_size(split, &main.size_a);
+		quoted_size(argv, &main.size_a);
 		allocate_mem(&main.a, &main.b, main.size_a);
 		push_arg(main.size_a, split, &main.a);
-		is_duplicate(main.a, main.size_a, main.b, split);
-		is_sorted(main.a, main.size_a, main.b, split);
+		is_duplicate(main.a, main.size_a, main.b);
+		is_sorted(main.a, main.size_a, main.b);
 	}
 	else 
 	{
@@ -75,8 +73,8 @@ int main(int argc, char **argv)
 		allocate_mem(&main.a, &main.b, argc - 1);
 		non_quoted_arg(argv, &main.size_a, argc);
 		push_arg(argc - 1, &argv[1], &main.a);
-		is_duplicate(main.a, main.size_a, main.b, split);
-		is_sorted(main.a, main.size_a, main.b, split);	
+		is_duplicate(main.a, main.size_a, main.b);
+		is_sorted(main.a, main.size_a, main.b);	
 	}
 	
 	sort_main(main.a, main.b, &main.size_a, &main.size_b);

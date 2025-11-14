@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void is_sorted(int *a, int size, int *b, char **split)
+void is_sorted(int *a, int size, int *b)
 {
     int i;
 
@@ -10,7 +10,10 @@ void is_sorted(int *a, int size, int *b, char **split)
     
     if (i == size - 1)
     {
-        free_all(a, b, split);
+        if (a)
+            free(a);
+        if (b)
+            free(b);
         exit(0);
     }
 }

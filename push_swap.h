@@ -13,8 +13,8 @@ typedef struct s_list
     int size_b;
 }t_list;
 
-void is_valid_char(char *str, int *b, char **split);
-void is_duplicate(int *arr, int size, int *b, char **split);
+void is_valid_char(char *str);
+void is_duplicate(int *arr, int size, int *b);
 void quoted_arg(char **argv, char ***str);
 void non_quoted_arg(char **argv, int *size, int argc);
 void push_a(int *a, int *b, int *a_size, int *b_size);
@@ -46,7 +46,7 @@ void quoted_size(char **str, int *size);
 void sort_main(int *a, int *b, int *size_a, int *size_b);
 void free_split(char **res);
 void free_all(int *a, int *b, char **split);
-void is_sorted(int *a, int size, int *b, char **split);
+void is_sorted(int *a, int size, int *b);
 void limitcontrol(long a, char sign);
 int ft_strlen(char *str);
 char *epur_str(char *str, int i, int j);

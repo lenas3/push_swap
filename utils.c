@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:40 by asay              #+#    #+#             */
-/*   Updated: 2025/11/14 18:34:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 18:50:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,27 +46,21 @@ int ft_atoi(const char *str)
 	return (sign * result);
 }
 
-void is_valid_char(char *str, int *b, char **split)
+void is_valid_char(char *str)
 {
     int i;
 
     i = 0;
 	if(!str || str[0] == '\0')
-	{
-		free_all(NULL, b, split);
 		err_exit();
-	}
     while(str[i])
     {
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '-' || str[i] == '+'))
-		{
-			free_all(NULL, b, split);
-			err_exit();
-		}
+            err_exit();
         i++;
     }
 }
-void is_duplicate(int *arr, int size, int *b, char **split)
+void is_duplicate(int *arr, int size, int *b)
 {
 	int i;
 	int j;
@@ -79,7 +73,8 @@ void is_duplicate(int *arr, int size, int *b, char **split)
 		{
 			if(arr[i] == arr[j] )
 			{
-				free_all(arr, b, split);
+				free(arr);
+				free(b);
 				err_exit();
 			}
 			j++;
