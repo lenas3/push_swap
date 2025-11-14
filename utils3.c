@@ -15,18 +15,12 @@ void is_sorted(int *a, int size, int *b, char **split)
     }
 }
 
-void limitcontrol(long a, char sign, t_list *lst, char **split)
+void limitcontrol(long a, char sign)
 {
     if (sign == 1 && a > 2147483647)
-    {
-        free_all(lst->a, lst->b, split);
-        err_exit();
-    }
+            err_exit();
     if (sign == -1 && a > 2147483648)
-    {
-        free_all(lst->a, lst->b, split);
-        err_exit();
-    }
+            err_exit();
 }
 
 int ft_strlen(char *str)

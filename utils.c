@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:40 by asay              #+#    #+#             */
-/*   Updated: 2025/11/05 23:10:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 18:34:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void err_exit()
 	exit(1);
 }
 
-int ft_atoi(const char *str, t_list *lst, char **split)
+int ft_atoi(const char *str)
 {
 	int i = 0;
 	long result = 0;
@@ -34,23 +34,19 @@ int ft_atoi(const char *str, t_list *lst, char **split)
 		i++;
 	}
 	if (str[i] == '\0' || (str[i] < '0' || str[i] > '9'))
-	{
-		free_all(lst->a, lst->b, split);
-		err_exit();
-	}
+        err_exit();
 	while(str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
-		limitcontrol(result, sign, lst, split);
+		limitcontrol(result, sign);
 		i++;
 	}
 	if (str[i] != '\0')
-	{
-		free_all(lst->a, lst->b, split);
-		err_exit();
-	}
+        err_exit();
 	return (sign * result);
-}void is_valid_char(char *str, int *b, char **split)
+}
+
+void is_valid_char(char *str, int *b, char **split)
 {
     int i;
 
@@ -92,14 +88,14 @@ void is_duplicate(int *arr, int size, int *b, char **split)
 	}
 }
 
-void push_arg(int argc, char **argv, t_list *lst, char **split)
+void push_arg(int argc, char **argv, int **arr)
 {
 	int i;
 
 	i = 0;
 	while(i < argc)
 	{
-		lst->a[i] = ft_atoi(argv[i], lst, split);
+		(*arr)[i] = ft_atoi(argv[i]);
 		i++;
 	}
 }

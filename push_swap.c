@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/11/14 18:18:15 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 18:34:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ int main(int argc, char **argv)
 		quoted_arg(argv, &split);
 		quoted_size(split, &main.size_a);
 		allocate_mem(&main.a, &main.b, main.size_a);
-		push_arg(main.size_a, split, &main, split);
+		push_arg(main.size_a, split, &main.a);
 		is_duplicate(main.a, main.size_a, main.b, split);
 		is_sorted(main.a, main.size_a, main.b, split);
 	}
@@ -74,7 +74,7 @@ int main(int argc, char **argv)
 		main.size_a = argc - 1;
 		allocate_mem(&main.a, &main.b, argc - 1);
 		non_quoted_arg(argv, &main.size_a, argc);
-		push_arg(argc - 1, &argv[1], &main, NULL);
+		push_arg(argc - 1, &argv[1], &main.a);
 		is_duplicate(main.a, main.size_a, main.b, split);
 		is_sorted(main.a, main.size_a, main.b, split);	
 	}
