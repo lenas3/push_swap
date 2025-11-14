@@ -83,3 +83,11 @@ void free_split(char **res)
     }
     free(res);
 }
+void free_all(int *a, int *b, char **split)
+{
+    if (a)
+        free(a);
+    if (b)
+        free(b);
+    free_split(split);
+}

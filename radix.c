@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:23:05 by asay              #+#    #+#             */
-/*   Updated: 2025/11/11 23:19:40 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/14 17:31:34 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ int find_max_move(int *a, int size)
     i = 0;
     count = 0;
     index = index_array(a, size);
+    if (!index)
+        return (0);
     max = index[i];
     while(i < size)
     {
@@ -79,13 +81,15 @@ void radix(int *a, int *b, int *size_a, int *size_b)
     int k = 0;
     index = 0;
 
+    max_move = find_max_move(a, *size_a);
     ind_arr = index_array(a, *size_a);
+    if (!ind_arr)
+        return;
     while(k < *size_a)
     {
         a[k] = ind_arr[k];
         k++;
     }   
-    max_move = find_max_move(ind_arr, *size_a);
     while(index < max_move)
     {
         i = 0;

@@ -3,8 +3,17 @@
 
 #include <unistd.h>
 #include <stdlib.h>
+# include <limits.h>
 
-void is_valid_char(char *str);
+typedef struct s_list
+{
+    int *a;
+    int *b;
+    int size_a;
+    int size_b;
+}t_list;
+
+void is_valid_char(char *str, int *b, char **split);
 void is_duplicate(int *arr, int size, int *b, char **split);
 void quoted_arg(char **argv, char ***str);
 void non_quoted_arg(char **argv, int *size, int argc);
@@ -30,12 +39,17 @@ void	swap_a(int *a, int size, int flag);
 void	swap_b(int *b, int size, int flag);
 void	swap_ab(int *a, int *b, int size_a, int size_b);
 void	err_exit();
-int ft_atoi(const char *str);
-void push_arg(int argc, char **argv, int **arr);
+int ft_atoi(const char *str, t_list *lst, char **split);
+void push_arg(int argc, char **argv, t_list *lst, char **split);
 void allocate_mem(int **a, int **b, int size_a);
 void quoted_size(char **str, int *size);
 void sort_main(int *a, int *b, int *size_a, int *size_b);
 void free_split(char **res);
 void free_all(int *a, int *b, char **split);
+void is_sorted(int *a, int size, int *b, char **split);
+void limitcontrol(long a, char sign, t_list *lst, char **split);
+int ft_strlen(char *str);
+char *epur_str(char *str, int i, int j);
+
 
 #endif

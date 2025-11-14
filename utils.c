@@ -14,45 +14,92 @@
 
 void err_exit()
 {
-	write(1, "Error\n", 6);
-
-	exit(EXIT_FAILURE);
+	write(2, "Error\n", 6);
+	exit(1);
 }
 
-int ft_atoi(const char *str)
+int ft_atoi(const char *str, t_list *lst, char **split)
 {
-    int i = 0;
-    long result = 0;
-    int sign = 1;
+	int i = 0;
+	long result = 0;
+	int sign = 1;
 
-	while(str[i] &&( str[i] == ' ' ||  str[i] == '\t' || str[i] == '\r' ||
-	        str[i] == '\f'|| str[i] == '\n' || str[i] == '\v'))
-	    i++;
-
+    while(str[i] &&( str[i] == ' ' ||  str[i] == '\t' || str[i] == '\r' ||
+            str[i] == '\f'|| str[i] == '\n' || str[i] == '\v'))
+		i++;
 	if(str[i] == '+' || str[i] == '-')
 	{
-	    if(str[i] == '-')
-	        sign *= -1;
-	    i++;
+		if(str[i] == '-')
+			sign *= -1;
+		i++;
+	}
+	if (str[i] == '\0' || (str[i] < '0' || str[i] > '9'))
+	{
+		free_all(lst->a, lst->b, split);
+		err_exit();
 	}
 	while(str[i] >= '0' && str[i] <= '9')
 	{
-	    result = result * 10 + (str[i] - '0');
-	    i++;
+		result = result * 10 + (str[i] - '0');
+		limitcontrol(result, sign, lst, split);
+		i++;
 	}
-	if(result * sign < -2147483648 || result * sign > 2147483647)
+	if (str[i] != '\0')
+	{
+		free_all(lst->a, lst->b, split);
 		err_exit();
+	}
 	return (sign * result);
+}void is_valid_char(char *str, int *b, char **split)
+{
+    int i;
+
+    i = 0;
+	if(!str || str[0] == '\0')
+	{
+		free_all(NULL, b, split);
+		err_exit();
+	}
+    while(str[i])
+    {
+		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '-' || str[i] == '+'))
+		{
+			free_all(NULL, b, split);
+			err_exit();
+		}
+        i++;
+    }
+}
+void is_duplicate(int *arr, int size, int *b, char **split)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while(i < size - 1)
+	{
+		j = i + 1;
+		while(j < size)
+		{
+			if(arr[i] == arr[j] )
+			{
+				free_all(arr, b, split);
+				err_exit();
+			}
+			j++;
+		}
+		i++;
+	}
 }
 
-void push_arg(int argc, char **argv, int **arr)
+void push_arg(int argc, char **argv, t_list *lst, char **split)
 {
 	int i;
 
 	i = 0;
 	while(i < argc)
 	{
-		(*arr)[i] = ft_atoi(argv[i]);
+		lst->a[i] = ft_atoi(argv[i], lst, split);
 		i++;
 	}
 }
