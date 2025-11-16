@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:40 by asay              #+#    #+#             */
-/*   Updated: 2025/11/14 18:50:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/16 19:10:36 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void err_exit()
 	exit(1);
 }
 
-int ft_atoi(const char *str)
+int ft_atoi(const char *str, t_list *main)
 {
 	int i = 0;
 	long result = 0;
@@ -34,33 +34,43 @@ int ft_atoi(const char *str)
 		i++;
 	}
 	if (str[i] == '\0' || (str[i] < '0' || str[i] > '9'))
-        err_exit();
+	{
+		free_all(main);
+		err_exit();
+	}
 	while(str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
-		limitcontrol(result, sign);
+		limitcontrol(result, sign, main);
 		i++;
 	}
 	if (str[i] != '\0')
-        err_exit();
+	{
+		free_all(main);
+		err_exit();
+	}
 	return (sign * result);
 }
 
-void is_valid_char(char *str)
+void is_valid_char(char *str, t_list *main)
 {
     int i;
 
-    i = 0;
+	i = 0;
 	if(!str || str[0] == '\0')
 		err_exit();
     while(str[i])
     {
 		if (!((str[i] >= '0' && str[i] <= '9') || str[i] == ' ' || str[i] == '-' || str[i] == '+'))
-            err_exit();
+		{
+			free_all(main);
+			err_exit();
+		}
         i++;
     }
 }
-void is_duplicate(int *arr, int size, int *b)
+
+void is_duplicate(int *arr, int size, t_list *main)
 {
 	int i;
 	int j;
@@ -71,10 +81,9 @@ void is_duplicate(int *arr, int size, int *b)
 		j = i + 1;
 		while(j < size)
 		{
-			if(arr[i] == arr[j] )
+			if(arr[i] == arr[j])
 			{
-				free(arr);
-				free(b);
+				free_all(main);
 				err_exit();
 			}
 			j++;
@@ -83,14 +92,14 @@ void is_duplicate(int *arr, int size, int *b)
 	}
 }
 
-void push_arg(int argc, char **argv, int **arr)
+void push_arg(int argc, char **argv, int **arr, t_list *main)
 {
 	int i;
 
 	i = 0;
 	while(i < argc)
 	{
-		(*arr)[i] = ft_atoi(argv[i]);
+		(*arr)[i] = ft_atoi(argv[i], main);
 		i++;
 	}
 }

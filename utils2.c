@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:45:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/14 18:50:11 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/16 18:18:54 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,16 @@ void allocate_mem(int **a, int **b, int size_a)
 {
 	*a = malloc(sizeof(int) * size_a);
 	if(!*a)
-        err_exit();
+    {
+        write(2, "Error\n", 6); 
+        exit(1);
+    }
     *b = malloc(sizeof(int) * size_a);
 	if(!*b)
     {
         free(*a);
-        err_exit();
+        write(2, "Error\n", 6); 
+        exit(1);
         //memory ayrılamama hatasında error yazmak dogru mu?
     }
 }
@@ -66,7 +70,6 @@ void sort_main(int *a, int *b, int *size_a, int *size_b)
         five_element_sort(a, b, size_a, size_b);
     else
         radix(a, b, size_a, size_b);
-    //write(1, "sort_main done\n", 15);
 }
 
 void free_split(char **res)
@@ -83,9 +86,15 @@ void free_split(char **res)
     }
     free(res);
 }
-void free_all(int *a, int *b, char **split)
+void free_all(t_list *main)
 {
-    free(a);
-    free(b);
-    free_split(split);
+    
+    if(main != NULL)
+    {
+        if (main->a != NULL) 
+            free(main->a);
+        if (main->b != NULL)
+            free(main->b);
+        free_split(main->split);
+    }
 }

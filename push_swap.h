@@ -11,11 +11,12 @@ typedef struct s_list
     int *b;
     int size_a;
     int size_b;
+    char **split;
 }t_list;
 
-void is_valid_char(char *str);
-void is_duplicate(int *arr, int size, int *b);
-void quoted_arg(char **argv, char ***str);
+void is_valid_char(char *str, t_list *main);
+void is_duplicate(int *arr, int size, t_list *main);
+void quoted_arg(char **argv, char ***str, t_list *main);
 void non_quoted_arg(char **argv, int *size, int argc);
 void push_a(int *a, int *b, int *a_size, int *b_size);
 void push_b(int *a, int *b, int *a_size, int *b_size);
@@ -39,17 +40,17 @@ void	swap_a(int *a, int size, int flag);
 void	swap_b(int *b, int size, int flag);
 void	swap_ab(int *a, int *b, int size_a, int size_b);
 void	err_exit();
-int ft_atoi(const char *str);
-void push_arg(int argc, char **argv, int **arr);
+int ft_atoi(const char *str, t_list *main);
+void push_arg(int argc, char **argv, int **arr, t_list *main);
 void allocate_mem(int **a, int **b, int size_a);
 void quoted_size(char **str, int *size);
 void sort_main(int *a, int *b, int *size_a, int *size_b);
 void free_split(char **res);
-void free_all(int *a, int *b, char **split);
-void is_sorted(int *a, int size, int *b);
-void limitcontrol(long a, char sign);
+void free_all(t_list *main);
+int is_sorted(int *a, int size);
+void limitcontrol(long a, char sign, t_list *main);
 int ft_strlen(char *str);
 char *epur_str(char *str, int i, int j);
 
 
-#endif
+# endif

@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void is_sorted(int *a, int size, int *b)
+int is_sorted(int *a, int size)
 {
     int i;
 
@@ -9,21 +9,22 @@ void is_sorted(int *a, int size, int *b)
         i++;
     
     if (i == size - 1)
-    {
-        if (a)
-            free(a);
-        if (b)
-            free(b);
-        exit(0);
-    }
+        return 0;
+    return 1;
 }
 
-void limitcontrol(long a, char sign)
+void limitcontrol(long a, char sign, t_list *main)
 {
     if (sign == 1 && a > 2147483647)
-            err_exit();
+    {
+		free_all(main);
+		err_exit();
+    }    
     if (sign == -1 && a > 2147483648)
-            err_exit();
+    {
+		free_all(main);
+		err_exit();
+    }
 }
 
 int ft_strlen(char *str)
@@ -63,12 +64,3 @@ char *epur_str(char *str, int i, int j)
     res[j] = '\0';
     return (res);
 }
-
-
-
-
-
-
-
-
-
