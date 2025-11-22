@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-int is_sorted(int *a, int size)
+int is_sorted(int *a, int size, t_list *main)
 {
     int i;
 
@@ -9,7 +9,11 @@ int is_sorted(int *a, int size)
         i++;
     
     if (i == size - 1)
+    {
+        free_all(main);
+
         return 0;
+    }
     return 1;
 }
 

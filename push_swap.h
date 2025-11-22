@@ -8,7 +8,7 @@
 typedef struct s_list
 {
     int *a;
-    int *b;
+    int *b  ;
     int size_a;
     int size_b;
     char **split;
@@ -17,7 +17,6 @@ typedef struct s_list
 void is_valid_char(char *str, t_list *main);
 void is_duplicate(int *arr, int size, t_list *main);
 void quoted_arg(char **argv, char ***str, t_list *main);
-void non_quoted_arg(char **argv, int *size, int argc);
 void push_a(int *a, int *b, int *a_size, int *b_size);
 void push_b(int *a, int *b, int *a_size, int *b_size);
 int *index_array(int *arr, int size);
@@ -47,10 +46,10 @@ void quoted_size(char **str, int *size);
 void sort_main(int *a, int *b, int *size_a, int *size_b);
 void free_split(char **res);
 void free_all(t_list *main);
-int is_sorted(int *a, int size);
+int is_sorted(int *a, int size, t_list *main);
 void limitcontrol(long a, char sign, t_list *main);
 int ft_strlen(char *str);
 char *epur_str(char *str, int i, int j);
-
+int	ft_strcmp(char *s1, char *s2);
 
 # endif
