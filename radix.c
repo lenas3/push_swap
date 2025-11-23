@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   radix.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 17:23:05 by asay              #+#    #+#             */
-/*   Updated: 2025/11/14 18:50:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/11/23 17:26:35 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int *index_array(int *arr, int size)
 {
@@ -69,38 +68,39 @@ int find_max_move(int *a, int size)
     return count;
 }
 
+void copy_ind_array(int *a, int *ind_arr, int size)
+{
+    int i = 0;
+    while(i < size)
+    {
+        a[i] = ind_arr[i];
+        i++;
+    }
+}
+
 void radix(int *a, int *b, int *size_a, int *size_b)
 {
-    int i;
-    int index;
-    int max_move;
-    int len;
-    int *ind_arr;
-    int k = 0;
-    index = 0;
+    t_radix r;
 
-    ind_arr = index_array(a, *size_a);
-    while(k < *size_a)
+    r.index = 0;
+    r.ind_arr = index_array(a, *size_a);
+    copy_ind_array(a, r.ind_arr, *size_a);
+    r.max_move = find_max_move(r.ind_arr, *size_a);   
+    while(r.index < r.max_move)
     {
-        a[k] = ind_arr[k];
-        k++;
-    }   
-    max_move = find_max_move(ind_arr, *size_a);   
-    while(index < max_move)
-    {
-        i = 0;
-        len = *size_a;
-        while(i < len)
+        r.i = 0;
+        r.len = *size_a;
+        while(r.i < r.len)
         {
-            if(((a[0] >> index) & 1) == 1)
+            if(((a[0] >> r.index) & 1) == 1)
                 rotate_a(a, *size_a, 1);
             else
                 push_b(a, b, size_a, size_b);
-            i++;
+            r.i++;
         }
         while(*size_b != 0)
             push_a(a, b, size_a, size_b);
-        index++;
+        r.index++;
     }
-    free(ind_arr);
+    free(r.ind_arr);
 }

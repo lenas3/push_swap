@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 20:46:40 by asay              #+#    #+#             */
-/*   Updated: 2025/11/16 19:10:36 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 17:29:12 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,7 @@ int ft_atoi(const char *str, t_list *main)
 		i++;
 	}
 	if (str[i] == '\0' || (str[i] < '0' || str[i] > '9'))
-	{
-		free_all(main);
-		err_exit();
-	}
+		free_all(main), err_exit();
 	while(str[i] >= '0' && str[i] <= '9')
 	{
 		result = result * 10 + (str[i] - '0');
@@ -45,10 +42,7 @@ int ft_atoi(const char *str, t_list *main)
 		i++;
 	}
 	if (str[i] != '\0')
-	{
-		free_all(main);
-		err_exit();
-	}
+		free_all(main), err_exit();
 	return (sign * result);
 }
 

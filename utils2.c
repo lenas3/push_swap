@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/01 15:45:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/16 18:18:54 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 17:38:29 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void allocate_mem(int **a, int **b, int size_a)
         free(*a);
         write(2, "Error\n", 6); 
         exit(1);
-        //memory ayrılamama hatasında error yazmak dogru mu?
     }
 }
 
@@ -87,14 +86,17 @@ void free_split(char **res)
     free(res);
 }
 void free_all(t_list *main)
-{
-    
-    if(main != NULL)
+{ 
+    if (main->a != NULL) 
     {
-        if (main->a != NULL) 
-            free(main->a);
-        if (main->b != NULL)
-            free(main->b);
-        free_split(main->split);
+        free(main->a);
+        main->a = NULL;
     }
+    if (main->b != NULL)
+    {
+        free(main->b);
+        main->b = NULL;
+    }
+    free_split(main->split);
+    main->split = NULL;
 }

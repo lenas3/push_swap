@@ -6,11 +6,20 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/11/22 21:24:21 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 17:36:21 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+    int i = 0;
+
+    while (s1[i] && s2[i] && s1[i] == s2[i])
+        i++;
+    return (s1[i] - s2[i]);
+}
 
 void quoted_arg(char **argv, char ***str, t_list *main)
 {
@@ -39,15 +48,18 @@ void quoted_arg(char **argv, char ***str, t_list *main)
 	}
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void handle_quoted(t_list *main, char **argv)
 {
-    int i = 0;
-
-    while (s1[i] && s2[i] && s1[i] == s2[i])
-        i++;
-    return (s1[i] - s2[i]);
+	if(ft_strcmp(argv[1], "") == 0)
+		return ;
+	quoted_arg(argv, &main->split, main);
+	quoted_size(argv, &main->size_a);
+	allocate_mem(&main->a, &main->b, main->size_a);
+	push_arg(main->size_a, main->split, &main->a, main);
+	is_duplicate(main->a, main->size_a, main);
+	if(!(is_sorted(main->a, main->size_a, main)))
+		return ;
 }
-
 int main(int argc, char **argv)
 {	
 	t_list main;
@@ -60,17 +72,7 @@ int main(int argc, char **argv)
 	main.size_b = 0;
 	main.size_a = 0;
 	if(argc == 2)
-	{
-		if(ft_strcmp(argv[1], "") == 0)
-			return 0;
-		quoted_arg(argv, &main.split, &main);
-		quoted_size(argv, &main.size_a);
-		allocate_mem(&main.a, &main.b, main.size_a);
-		push_arg(main.size_a, main.split, &main.a, &main);
-		is_duplicate(main.a, main.size_a, &main);
-		if(!(is_sorted(main.a, main.size_a, &main)))
-			return 0;
-	}
+		handle_quoted(&main, argv);
 	else 
 	{
 		main.size_a = argc - 1;
@@ -84,3 +86,4 @@ int main(int argc, char **argv)
 	free_all(&main);
 	return 0;
 }
+

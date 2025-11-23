@@ -14,6 +14,15 @@ typedef struct s_list
     char **split;
 }t_list;
 
+typedef struct s_radix
+{
+    int i;
+    int index;
+    int len;
+    int *ind_arr;
+    int max_move;
+}t_radix;
+
 void is_valid_char(char *str, t_list *main);
 void is_duplicate(int *arr, int size, t_list *main);
 void quoted_arg(char **argv, char ***str, t_list *main);
@@ -51,5 +60,7 @@ void limitcontrol(long a, char sign, t_list *main);
 int ft_strlen(char *str);
 char *epur_str(char *str, int i, int j);
 int	ft_strcmp(char *s1, char *s2);
+void handle_quoted(t_list *main, char **argv);
+void copy_ind_array(int *a, int *ind_arr, int size);
 
 # endif
