@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:54:08 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 19:15:10 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 19:43:24 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ char	*epur_str(char *str, int i, int j);
 int		ft_strcmp(char *s1, char *s2);
 void	handle_quoted(t_list *main, char **argv);
 void	copy_ind_array(int *a, int *ind_arr, int size);
-void	init_skip_control(t_list *main, const char *str);
+void	skip_and_sign(const char *str, int *i, int *sign);
 
 #endif
