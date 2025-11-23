@@ -6,17 +6,11 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:46:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 18:50:58 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 19:15:46 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	err_exit(void)
-{
-	write(2, "Error\n", 6);
-	exit(1);
-}
 
 int	is_sorted(int *a, int size, t_list *main)
 {

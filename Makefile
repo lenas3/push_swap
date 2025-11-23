@@ -14,7 +14,7 @@ SRCS = push_swap.c \
 	   
 OBJS = $(SRCS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -fsanitize=address -g
+CFLAGS = -Wall -Wextra -Werror 
 
 all : $(NAME)
 

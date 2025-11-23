@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:54:08 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 18:57:00 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 19:15:10 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	swap_a(int *a, int size, int flag);
 void	swap_b(int *b, int size, int flag);
 void	swap_ab(int *a, int *b, int size_a, int size_b);
 void	err_exit(void);
-int		ft_atoi(const char *str, t_list *main, int i);
+int		ft_atoi(const char *str, t_list *main);
 void	push_arg(int argc, char **argv, int **arr, t_list *main);
 void	allocate_mem(int **a, int **b, int size_a);
 void	quoted_size(char **str, int *size);
