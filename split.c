@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 18:26:46 by asay              #+#    #+#             */
-/*   Updated: 2025/10/26 18:27:47 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/23 18:18:57 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,6 @@ static char	**fill_array(char **result, const char *s, char c)
 	result[j] = NULL;
 	return (result);
 }
-
 
 char	**ft_split(char const *s, char c)
 {
