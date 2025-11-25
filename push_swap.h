@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:54:08 by asay              #+#    #+#             */
-/*   Updated: 2025/11/25 14:36:32 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/25 15:16:39 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	quoted_size(char **str, int *size);
 void	sort_main(int *a, int *b, int *size_a, int *size_b);
 void	free_split(char **res);
 void	free_all(t_list *main);
-int		is_sorted(int *a, int size, t_list *main);
+int		is_sorted(int *a, int size);
 void	limitcontrol(long a, char sign, t_list *main);
 int		ft_strlen(char *str);
 char	*epur_str(char *str, int i, int j);

@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 21:03:17 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 17:56:32 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/25 15:17:17 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	handle_quoted(t_list *main, char **argv)
 	allocate_mem(&main->a, &main->b, main->size_a);
 	push_arg(main->size_a, main->split, &main->a, main);
 	is_duplicate(main->a, main->size_a, main);
-	if (!(is_sorted(main->a, main->size_a, main)))
-		return ;
 }
 
 int	main(int argc, char **argv)
@@ -81,9 +79,9 @@ int	main(int argc, char **argv)
 		allocate_mem(&main.a, &main.b, argc - 1);
 		push_arg(argc - 1, &argv[1], &main.a, &main);
 		is_duplicate(main.a, main.size_a, &main);
-		if (!(is_sorted(main.a, main.size_a, &main)))
-			return (0);
 	}
+	if (!(is_sorted(main.a, main.size_a)))
+		return (free_all(&main), 0);
 	sort_main(main.a, main.b, &main.size_a, &main.size_b);
 	free_all(&main);
 	return (0);

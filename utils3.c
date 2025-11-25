@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:46:57 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 19:31:45 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/25 15:14:52 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	err_exit(void)
 	exit(1);
 }
 
-int	is_sorted(int *a, int size, t_list *main)
+int	is_sorted(int *a, int size)
 {
 	int	i;
 
@@ -26,10 +26,7 @@ int	is_sorted(int *a, int size, t_list *main)
 	while (i < size - 1 && (a[i] < a[i + 1]))
 		i++;
 	if (i == size - 1)
-	{
-		free_all(main);
 		return (0);
-	}
 	return (1);
 }
 
