@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/23 18:54:08 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 19:43:24 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/25 14:36:32 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,8 @@ int		find_max_move(int *a, int size);
 void	radix(int *a, int *b, int *size_a, int *size_b);
 void	re_rotate_a(int *a, int size, int flag);
 void	re_rotate_b(int *b, int size, int flag);
-void	re_rotate_both(int *a, int *b, int size_a, int size_b);
 void	rotate_a(int *a, int size, int flag);
 void	rotate_b(int *b, int size, int flag);
-void	rotate_both(int *a, int *b, int size_a, int size_b);
 int		min_element(int *arr, int size);
 void	place_to_top(int *a, int size);
 void	five_element_sort(int *a, int *b, int *a_size, int *b_size);
@@ -58,7 +56,6 @@ void	three_element_sort(int *a, int size);
 char	**ft_split(char const *s, char c);
 void	swap_a(int *a, int size, int flag);
 void	swap_b(int *b, int size, int flag);
-void	swap_ab(int *a, int *b, int size_a, int size_b);
 void	err_exit(void);
 int		ft_atoi(const char *str, t_list *main);
 void	push_arg(int argc, char **argv, int **arr, t_list *main);

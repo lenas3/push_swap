@@ -6,7 +6,7 @@
 /*   By: asay <asay@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 16:59:50 by asay              #+#    #+#             */
-/*   Updated: 2025/11/23 18:12:51 by asay             ###   ########.fr       */
+/*   Updated: 2025/11/25 14:35:21 by asay             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,4 @@ void	rotate_b(int *b, int size, int flag)
 	b[size - 1] = temp;
 	if (flag)
 		write(1, "rb\n", 3);
-}
-
-void	rotate_both(int *a, int *b, int size_a, int size_b)
-{
-	rotate_a(a, size_a, 0);
-	rotate_b(b, size_b, 0);
-	write(1, "rr\n", 3);
 }

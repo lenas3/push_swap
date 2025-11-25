@@ -45,10 +45,3 @@ void	re_rotate_b(int *b, int size, int flag)
 	if (flag)
 		write(1, "rrb\n", 4);
 }
-
-void	re_rotate_both(int *a, int *b, int size_a, int size_b)
-{
-	re_rotate_a(a, size_a, 0);
-	re_rotate_b(b, size_b, 0);
-	write(1, "rrr\n", 4);
-}
